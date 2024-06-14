@@ -1,0 +1,79 @@
+{
+  "type": "record",
+  "name": "CreateAliquot",
+  "namespace": "uk.ac.sanger.psd",
+  "fields": [
+    {
+      "name": "id_lims",
+      "type": "string",
+      "doc": "The LIMS system that the aliquot was created in"
+    },
+    {
+      "name": "lims_uuid",
+      "type": "version4MessageUuid",
+      "doc": "The UUID of the aliquot in the LIMS system"
+    },
+    {
+      "name": "aliquot_type",
+      "type": "enum",
+      "doc": "The type of the aliquot",
+      "symbols": ["primary", "derived"]
+    },
+    {
+      "name": "source_type",
+      "type": "enum",
+      "doc": "The type of the source of the aliquot"
+      "symbols": ["well", "sample", "library", "pool"]
+    },
+    {
+      "name": "source_barcode",
+      "type": "string",
+      "doc": "The barcode of the source of the aliquot"
+    },
+    {
+      "name": "sample_name",
+      "type": "string",
+      "doc": "The name of the sample that the aliquot was created from"
+    },
+    {
+      "name": "used_by_type",
+      "type": "enum",
+      "doc": "The type of the entity that the aliquot is used by"
+      "symbols": ["library", "pool", "run"]
+    },
+    {
+      "name": "used_by_barcode",
+      "type": "string",
+      "doc": "The barcode of the entity that the aliquot is used by"
+    },
+    {
+      "name": "volume",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 10,
+        "scale": 2
+      },
+      "doc": "The volume of the aliquot (uL)"
+    },
+    {
+      "name": "concentration",
+      "type": ["null", {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 10,
+        "scale": 2
+      }],
+      "doc": "The concentration of the aliquot (ng/ul)",
+      "default": null
+    },
+    {
+      "name": "recorded_at",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      },
+      "doc": "The date and time that the aliquot was recorded"
+    }
+  ]
+}
