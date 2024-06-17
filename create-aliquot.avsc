@@ -3,72 +3,77 @@
   "name": "CreateAliquot",
   "namespace": "uk.ac.sanger.psd",
   "fields": [
+     {
+      "name": "messageUuid",
+      "doc": "Unique message ID.",
+      "type": "uuid"
+    },
     {
-      "name": "id_lims",
+      "name": "messageCreateDateUtc",
+      "doc": "Date (UTC) that the message was created.",
+      "type": { 
+        "type": "long", 
+        "logicalType": "timestamp-millis" 
+      }
+    },
+    {
+      "name": "LimsId",
       "type": "string",
       "doc": "The LIMS system that the aliquot was created in"
     },
     {
-      "name": "lims_uuid",
-      "type": "version4MessageUuid",
+      "name": "LimsUuid",
+      "type": "uuid",
       "doc": "The UUID of the aliquot in the LIMS system"
     },
     {
-      "name": "aliquot_type",
+      "name": "aliquotType",
       "type": "enum",
       "doc": "The type of the aliquot",
       "symbols": ["primary", "derived"]
     },
     {
-      "name": "source_type",
+      "name": "sourceType",
       "type": "enum",
       "doc": "The type of the source of the aliquot"
       "symbols": ["well", "sample", "library", "pool"]
     },
     {
-      "name": "source_barcode",
+      "name": "sourceBarcode",
       "type": "string",
       "doc": "The barcode of the source of the aliquot"
     },
     {
-      "name": "sample_name",
+      "name": "sampleName",
       "type": "string",
       "doc": "The name of the sample that the aliquot was created from"
     },
     {
-      "name": "used_by_type",
+      "name": "usedByType",
       "type": "enum",
       "doc": "The type of the entity that the aliquot is used by"
       "symbols": ["library", "pool", "run"]
     },
     {
-      "name": "used_by_barcode",
+      "name": "usedByBarcode",
       "type": "string",
       "doc": "The barcode of the entity that the aliquot is used by"
     },
     {
       "name": "volume",
-      "type": {
-        "type": "bytes",
-        "logicalType": "decimal",
-        "precision": 10,
-        "scale": 2
-      },
+      "type": "float",
       "doc": "The volume of the aliquot (uL)"
     },
     {
       "name": "concentration",
       "type": ["null", {
-        "type": "bytes",
-        "logicalType": "decimal",
-        "precision": 10,
-        "scale": 2
+        "type": "float"
       }],
       "doc": "The concentration of the aliquot (ng/ul)",
       "default": null
     },
     {
-      "name": "recorded_at",
+      "name": "recordedAt",
       "type": {
         "type": "long",
         "logicalType": "timestamp-millis"
