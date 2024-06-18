@@ -3,10 +3,13 @@
   "name": "CreateAliquot",
   "namespace": "uk.ac.sanger.psd",
   "fields": [
-     {
+    {
       "name": "messageUuid",
       "doc": "Unique message ID.",
-      "type": "uuid"
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
     },
     {
       "name": "messageCreateDateUtc",
@@ -17,14 +20,17 @@
       }
     },
     {
-      "name": "LimsId",
+      "name": "limsId",
       "type": "string",
       "doc": "The LIMS system that the aliquot was created in"
     },
     {
-      "name": "LimsUuid",
-      "type": "uuid",
-      "doc": "The UUID of the aliquot in the LIMS system"
+      "name": "limsUuid",
+      "doc": "The UUID of the aliquot in the LIMS system",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
     },
     {
       "name": "aliquotType",
