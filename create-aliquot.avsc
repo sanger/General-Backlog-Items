@@ -1,7 +1,8 @@
 {
     "type": "record",
-    "name": "CreateAliquot",
+    "name": "CreateAliquotInMLWH",
     "namespace": "uk.ac.sanger.psd",
+    "doc": "Create an Aliquot in MLWH coming from Traction.",
     "fields": [
         {
             "name": "messageUuid",
@@ -95,9 +96,7 @@
             "name": "concentration",
             "type": [
                 "null",
-                {
-                    "type": "float"
-                }
+                "float"
             ],
             "doc": "The concentration of the aliquot (ng/ul)",
             "default": null
