@@ -27,11 +27,8 @@
         },
         {
             "name": "limsUuid",
-            "type": {
-                "type": "string",
-                "logicalType": "uuid"
-            },
-            "doc": "The UUID of the aliquot in the LIMS system"
+            "type": "string",
+            "doc": "The ID of the aliquot in the LIMS system"
         },
         {
             "name": "aliquotType",
