@@ -21,14 +21,14 @@
             "doc": "Date (UTC) that the message was created."
         },
         {
-            "name": "id_aliquot_lims",
+            "name": "limsId",
             "type": "string",
             "doc": "The LIMS system that the aliquot was created in"
         },
         {
             "name": "aliquotId",
             "type": "string",
-            "doc": "The ID of the aliquot in the LIMS system"
+            "doc": "The ID of the aliquot that was created in."
         },
         {
             "name": "aliquotType",
@@ -74,10 +74,12 @@
                 "symbols": [
                     "library",
                     "pool",
-                    "run"
+                    "run",
+                    "none"
                 ]
             },
-            "doc": "The type of the entity that the aliquot is used by"
+            "doc": "The type of the entity that the aliquot is used by",
+            "default": "none"
         },
         {
             "name": "usedByBarcode",
@@ -96,6 +98,15 @@
                 "float"
             ],
             "doc": "The concentration of the aliquot (ng/ul)",
+            "default": null
+        },
+        {
+            "name": "insertSize",
+            "type": [
+                "null",
+                "int"
+            ],
+            "doc": "The insert size for the aliquot",
             "default": null
         },
         {
