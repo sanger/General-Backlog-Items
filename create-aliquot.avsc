@@ -21,7 +21,7 @@
             "doc": "Date (UTC) that the message was created."
         },
         {
-            "name": "limsId",
+            "name": "id_aliquot_lims",
             "type": "string",
             "doc": "The LIMS system that the aliquot was created in"
         },
