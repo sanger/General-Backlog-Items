@@ -26,7 +26,7 @@
             "doc": "The LIMS system that the aliquot was created in"
         },
         {
-            "name": "limsUuid",
+            "name": "aliquotId",
             "type": "string",
             "doc": "The ID of the aliquot in the LIMS system"
         },
