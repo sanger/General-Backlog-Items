@@ -27,7 +27,10 @@
         },
         {
             "name": "aliquotId",
-            "type": "string",
+            "type": {
+                "type": "string",
+                "logicalType": "uuid"
+            },
             "doc": "The ID of the aliquot that was created in."
         },
         {
