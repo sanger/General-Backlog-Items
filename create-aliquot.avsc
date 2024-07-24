@@ -26,12 +26,12 @@
             "doc": "The LIMS system that the aliquot was created in"
         },
         {
-            "name": "aliquotId",
+            "name": "aliquotUuid",
             "type": {
                 "type": "string",
                 "logicalType": "uuid"
             },
-            "doc": "The ID of the aliquot that was created in."
+            "doc": "The UUID of the aliquot in the LIMS system"
         },
         {
             "name": "aliquotType",
