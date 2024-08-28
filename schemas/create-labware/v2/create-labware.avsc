@@ -1,0 +1,213 @@
+{
+    "type": "record",
+    "name": "CreateLabwareMessage",
+    "namespace": "uk.ac.sanger.psd",
+    "doc": "A create message to process new labware.",
+    "fields": [
+        {
+            "name": "messageUuid",
+            "type": {
+                "type": "fixed",
+                "name": "version4MessageUuid",
+                "size": 36
+            },
+            "doc": "Unique message ID."
+        },
+        {
+            "name": "messageCreateDateUtc",
+            "type": {
+                "type": "long",
+                "logicalType": "timestamp-millis"
+            },
+            "doc": "Date (UTC) that the message was created."
+        },
+        {
+            "name": "labware",
+            "type": {
+                "type": "record",
+                "name": "Labware",
+                "doc": "Labware data.",
+                "fields": [
+                    {
+                        "name": "labwareType",
+                        "type": "string"
+                    },
+                    {
+                        "name": "barcode",
+                        "type": "string",
+                        "doc": "The barcode for this labware."
+                    },
+                    {
+                        "name": "samples",
+                        "type": {
+                            "type": "array",
+                            "items": {
+                                "name": "Sample",
+                                "type": "record",
+                                "doc": "A labware sample",
+                                "fields": [
+                                    {
+                                        "name": "sampleUuid",
+                                        "doc": "Unique sample ID in UUID format.",
+                                        "type": "version4MessageUuid"
+                                    },
+                                    {
+                                        "name": "studyUuid",
+                                        "doc": "Unique study UUID where the sample belongs to",
+                                        "type": "version4MessageUuid"
+                                    },
+                                    {
+                                        "name": "sangerSampleId",
+                                        "type": "string",
+                                        "doc": "Unique id to identify the sample inside Sanger lims"
+                                    },
+                                    {
+                                        "name": "location",
+                                        "type": [
+                                            "null",
+                                            "string"
+                                        ],
+                                        "default": null,
+                                        "doc": "The location for the sample inside the labware, or null if location is not relevant in labware (Eg: tube)."
+                                    },
+                                    {
+                                        "name": "supplierSampleName",
+                                        "type": "string",
+                                        "doc": "Name given by the supplier of the sample"
+                                    },
+                                    {
+                                        "name": "volume",
+                                        "type": "string",
+                                        "doc": "Volume of the sample."
+                                    },
+                                    {
+                                        "name": "concentration",
+                                        "type": "string",
+                                        "doc": "Concentration of the sample."
+                                    },
+                                    {
+                                        "name": "publicName",
+                                        "type": "string",
+                                        "doc": "Public name of the sample."
+                                    },
+                                    {
+                                        "name": "taxonId",
+                                        "type": "string",
+                                        "doc": "Taxonomy Identifier."
+                                    },
+                                    {
+                                        "name": "commonName",
+                                        "type": "string",
+                                        "doc": "Common name for the sample"
+                                    },
+                                    {
+                                        "name": "donorId",
+                                        "type": "string",
+                                        "doc": "Identifier for the donor of the sample"
+                                    },
+                                    {
+                                        "name": "libraryType",
+                                        "type": "string",
+                                        "doc": "Type of library created for sequencing"
+                                    },
+                                    {
+                                        "name": "countryOfOrigin",
+                                        "type": "string",
+                                        "doc": "Country of origin for the sample"
+                                    },
+                                    {
+                                        "name": "sampleCollectionDateUtc",
+                                        "doc": "Sample Collection of the sample in UTC format.",
+                                        "type": {
+                                            "type": "long",
+                                            "logicalType": "timestamp-millis"
+                                        }
+                                    },
+                                    {
+                                        "name": "costCode",
+                                        "type": "string",
+                                        "doc": "Code for the project for billing purposes"
+                                    },
+                                    {
+                                        "name": "genomeSize",
+                                        "type": "string",
+                                        "doc": "Size of genome"
+                                    },
+                                    {
+                                        "name": "accessionNumber",
+                                        "type": "string",
+                                        "doc": "Accession number for publication in ENA/EBI"
+                                    },
+                                    {
+                                        "name": "shearedFemtoFragmentSize",
+                                        "type": "string",
+                                        "doc": "Sheared Femto Fragment Size (bp)"
+                                    },
+                                    {
+                                        "name": "postSPRIConcentration",
+                                        "type": "string",
+                                        "doc": "Post SPRI Concentration (ng/ul)"
+                                    },
+                                    {
+                                        "name": "postSPRIVolume",
+                                        "type": "string",
+                                        "doc": "Post SPRI Volume (ul)"
+                                    },
+                                    {
+                                        "name": "finalNanoDrop280",
+                                        "type": "string",
+                                        "doc": "Final NanoDrop 260/280"
+                                    },
+                                    {
+                                        "name": "finalNanoDrop230",
+                                        "type": "string",
+                                        "doc": "Final NanoDrop 260/230"
+                                    },
+                                    {
+                                        "name": "finalNanoDrop",
+                                        "type": "string",
+                                        "doc": "Final NanoDrop ng/ul"
+                                    },
+                                    {
+                                        "name": "shearingAndQCComments",
+                                        "type": "string",
+                                        "doc": "Shearing & QC comments"
+                                    },
+                                    {
+                                        "name": "dateSubmittedUTC",
+                                        "doc": "Date submitted in UTC format.",
+                                        "type": {
+                                            "type": "long",
+                                            "logicalType": "timestamp-millis"
+                                        }
+                                    },
+                                    {
+                                        "name": "priorityLevel",
+                                        "type": "string",
+                                        "doc": "Priority level (if High or Medium)"
+                                    },
+                                    {
+                                        "name": "retentionInstruction",
+                                        "type": {
+                                            "type": "enum",
+                                            "name": "allowedRetentionInstruction",
+                                            "symbols": [
+                                                "destroy_after_2_years",
+                                                "return_to_customer_after_2_years",
+                                                "long_term_storage"
+                                            ]
+                                        },
+                                        "default": "return_to_customer_after_2_years",
+                                        "doc": "The retention instruction (what the customer wants to happen to the sample)"
+                                    }
+                                ]
+                            }
+                        },
+                        "doc": "An array of data for samples on the labware."
+                    }
+                ]
+            },
+            "doc": "Labware to process."
+        }
+    ]
+}
