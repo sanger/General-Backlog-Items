@@ -1,0 +1,99 @@
+{
+  "type": "record",
+  "name": "UpdateLabwareMessage",
+  "namespace": "uk.ac.sanger.psd",
+  "doc": "A message describing the field level updates needed to be applied to a labware.",
+  "fields": [
+    {
+      "name": "messageUuid",
+      "type": {
+        "type": "fixed",
+        "name": "version4MessageUuid",
+        "size": 36
+      },
+      "doc": "Unique message ID."
+    },
+    {
+      "name": "messageCreateDateUtc",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      },
+      "doc": "Date (UTC) that the message was created."
+    },
+    {
+      "name": "labwareUpdates",
+      "type": [
+        "null",
+        {
+          "type": "array",
+          "items": {
+            "name": "Labware",
+            "type": "record",
+            "doc": "Labware data.",
+            "fields": [
+              {
+                "name": "labwareUuid",
+                "doc": "Unique labware ID, assigned by GSU.",
+                "type": {
+                  "name": "version4LabwareUuid",
+                  "type": "fixed",
+                  "size": 36
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "doc": "Name of the attribute of the labware we want to update (eg: 'barcode')"
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "doc": "Value we want to set for the attribute (eg: for name='barcode' the value could be for example '1234')"
+              }
+            ]
+          }
+        }
+      ],
+      "doc": "Labware object data.",
+      "default": null
+    },
+    {
+      "name": "sampleUpdates",
+      "type": [
+        "null",
+        {
+          "type": "array",
+          "items": {
+            "name": "LabwareSample",
+            "type": "record",
+            "doc": "Labware sample data.",
+            "fields": [
+              {
+                "name": "sampleUuid",
+                "doc": "Unique sample ID, assigned by GSU.",
+                "type": {
+                  "name": "version4SampleUuid",
+                  "type": "fixed",
+                  "size": 36
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "doc": "Name of the attribute of the sample we want to update (eg: 'volume')"
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "doc": "Value we want to set for the attribute (eg: for name='volume' the value could be for example '2 ml')"
+              }
+            ]
+          }
+        }
+      ],
+      "doc": "Sample object data.",
+      "default": null
+    }
+  ]
+}
