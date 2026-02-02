@@ -11,7 +11,8 @@
 -- BEGIN
 --     DECLARE control_phix VARCHAR(30) DEFAULT 'Heron PhiX';
 --     DECLARE control_illumina VARCHAR(30) DEFAULT 'Illumina Controls';
-WITH
+
+    WITH
     -- CTE 1: qc_complete
     -- Find the first QC-complete event for each run
     qc_complete AS (
@@ -90,7 +91,7 @@ WITH
         , sample_lanes.lane_position -- grouped
         , sample_lanes.batch_id -- grouped
         , GROUP_CONCAT(DISTINCT sample_lanes.study_name SEPARATOR ';') AS study_name -- effectively grouped
-        , sample_lanes.stock_plate_barcode -- grouped
+--        , sample_lanes.stock_plate_barcode. -- grouped
         , GROUP_CONCAT(DISTINCT sample_lanes.reagent_kit_barcode SEPARATOR ';') AS reagent_kit_barcode -- effectively 1 to 1 with platform
         , GROUP_CONCAT(DISTINCT sample_lanes.sbs_cycle_kit SEPARATOR ';')  AS sbs_cycle_kit -- effectively 1 to 1 with platform
         , sample_lanes.qc_outcome -- grouped
@@ -117,7 +118,7 @@ WITH
         , sample_lanes.batch_id
         , sample_lanes.library
         , sample_lanes.lane_position
-        , stock_plate_barcode
+--        stock_plate_barcode
     ORDER BY sample_lanes.study_name
         , project_cost_code
         , platform
@@ -127,7 +128,7 @@ WITH
         , sample_lanes.batch_id
         , sample_lanes.library
         , sample_lanes.lane_position
-        , stock_plate_barcode
+--        stock_plate_barcode
     ;
 
 -- END$$
