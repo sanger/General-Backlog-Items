@@ -11,7 +11,8 @@
 -- BEGIN
 --     DECLARE control_phix VARCHAR(30) DEFAULT 'Heron PhiX';
 --     DECLARE control_illumina VARCHAR(30) DEFAULT 'Illumina Controls';
-WITH
+
+    WITH
     -- CTE 1: qc_complete
     -- Find the first QC-complete event for each run
     qc_complete AS (
@@ -71,7 +72,7 @@ WITH
         JOIN study st
             ON fc.id_study_tmp = st.id_study_tmp
         -- don't include controls in the overall sample_lane set
-        WHERE st.name NOT IN ('Heron PhiX', 'Illumina Controls')
+        WHERE st.name NOT IN ('Heron PhiX', 'Illumina Controls', 'Comp PhiX')
     ),
     -- CTE 3: lane_proportions
     -- For each lane: count samples & compute 1/N
