@@ -4,13 +4,11 @@
 -- and groups by Study Name, Project Cost Code, and Stock Plate Barcode.
 
 -- DELIMITER $$
--- CREATE DEFINER=`mlwh_admin`@`%` PROCEDURE `billing_report_stored_proc`(
+-- CREATE DEFINER=`mlwh_admin`@`%` PROCEDURE `billing_report_v2_stored_proc`(
 --     IN from_date DATETIME,
 --     IN to_date   DATETIME
 -- )
 -- BEGIN
---     DECLARE control_phix VARCHAR(30) DEFAULT 'Heron PhiX';
---     DECLARE control_illumina VARCHAR(30) DEFAULT 'Illumina Controls';
 
     WITH
     -- CTE 1: qc_complete
